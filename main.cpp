@@ -7,7 +7,7 @@
 // the beginning of the program and ends when the animation completes.
 
 #include <SDL.h>
-#include<SDL_image.h>
+#include <SDL_image.h>
 #include <iostream>
 #include <string>
 #include "generateFrames.h"
@@ -15,9 +15,9 @@
 const unsigned int WIDTH = 854u;
 const unsigned int HEIGHT = 480u;
 
-const float START_Y = 350.0;
+const float START_Y = 10.0;
 const float INCR_X = 0.3;
-const float X_VELOCITY = 300.0;
+const float X_VELOCITY = 150.0;
 
 // Approximately 60 frames per second: 60/1000
 const unsigned int DT = 17u; // ***
@@ -30,12 +30,12 @@ void init() {
 }
 
 SDL_Surface* getImage(const std::string& filename, bool setColorKey) {
-  SDL_Surface *temp = SDL_LoadBMP(filename.c_str());
+  SDL_Surface *temp = 	IMG_Load(filename.c_str());
   if (temp == NULL) {
     throw std::string("Unable to load bitmap.")+SDL_GetError();
   }
   if ( setColorKey ) {
-    Uint32 colorkey = SDL_MapRGB(temp->format, 255, 0, 255);
+    Uint32 colorkey = SDL_MapRGB(temp->format, 255,255,255);
     SDL_SetColorKey(temp, SDL_SRCCOLORKEY|SDL_RLEACCEL, colorkey);
   }
   SDL_Surface *image = SDL_DisplayFormat(temp);
@@ -54,7 +54,7 @@ void draw(SDL_Surface* image, SDL_Surface* screen,
   SDL_BlitSurface(image, &src, screen, &dest);
 }
 
-bool update(float& x) {
+bool update(float& x, float&y) {
   static unsigned int remainder = 0u; // ***
   static unsigned int currentTicks = 0u;
   static unsigned int prevTicks = SDL_GetTicks();
@@ -64,7 +64,8 @@ bool update(float& x) {
   if( elapsedTicks < DT ) return false; // ***
 
   float incr = X_VELOCITY * DT * 0.001; // ***
-  x += incr;
+  x += incr + 1;
+  y += incr;
 
   prevTicks = currentTicks;
   remainder = elapsedTicks - DT; // ***
@@ -79,10 +80,11 @@ int main() {
     if (screen == NULL) {
       throw std::string("Unable to set video mode: ")+SDL_GetError();
     }
-    SDL_Surface *mars = IMG_Load("images/sapnapg.jpg", false);
-    SDL_Surface *shuttle = IMG_Load("images/spaceshuttle.jpg", true);
+    SDL_Surface *mars = getImage("images/sapnapg.png", false);
+    SDL_Surface *astronaut = getImage("images/astronaut.jpg", true);
 
-    float x = -star->w;
+
+    float x = -astronaut->w;
     float y = START_Y;
     SDL_Event event;
     bool makeVideo = false;
@@ -96,8 +98,8 @@ int main() {
           if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
         }
       }
-      if ( x <= WIDTH-star->w ) {
-        freshFrame = update(x);
+      if ( y <= 406.0-astronaut->h ) {
+        freshFrame = update(x,y);
       }
       else {
         makeVideo = false;
@@ -109,12 +111,12 @@ int main() {
           genFrames.makeFrame();
         }
       }
-      draw(sky, screen);
-      draw(star, screen, x, y);
+      draw(mars, screen);
+      draw(astronaut, screen, x, y);
       SDL_Flip(screen);
     }
-    SDL_FreeSurface(sky);
-    SDL_FreeSurface(star);
+    SDL_FreeSurface(mars);
+    SDL_FreeSurface(astronaut);
   }
   catch(const std::string& msg) { std::cout << msg << std::endl;  }
   catch(...) { std::cout << "oops" << std::endl;  }
