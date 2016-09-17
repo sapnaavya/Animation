@@ -35,7 +35,7 @@ SDL_Surface* getImage(const std::string& filename, bool setColorKey) {
     throw std::string("Unable to load bitmap.")+SDL_GetError();
   }
   if ( setColorKey ) {
-    Uint32 colorkey = SDL_MapRGB(temp->format, 255,255,255);
+    Uint32 colorkey = SDL_MapRGB(temp->format, 0,0,0);
     SDL_SetColorKey(temp, SDL_SRCCOLORKEY|SDL_RLEACCEL, colorkey);
   }
   SDL_Surface *image = SDL_DisplayFormat(temp);
@@ -81,7 +81,7 @@ int main() {
       throw std::string("Unable to set video mode: ")+SDL_GetError();
     }
     SDL_Surface *mars = getImage("images/sapnapg.png", false);
-    SDL_Surface *astronaut = getImage("images/astronaut.jpg", true);
+    SDL_Surface *astronaut = getImage("images/astronaut.png", true);
 
 
     float x = -astronaut->w;
