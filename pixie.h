@@ -6,8 +6,6 @@ class Pixie
     public:
         Pixie();
         Pixie(const float& x, const float& y, const float& speed);
-        Pixie(const Pixie&);
-        Pixie& operator=(const Pixie&);
         ~Pixie();
         
         void setCoordinates(const float& x, const float& y);
@@ -29,4 +27,6 @@ class Pixie
         int blue;
         SDL_Surface* image;
         SDL_Surface* getImage(const std::string& filename, bool bColorKey = false);
+        Pixie(const Pixie&);
+        Pixie& operator=(const Pixie&);
 };
