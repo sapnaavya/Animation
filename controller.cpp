@@ -3,7 +3,7 @@
 #include<iostream>
 #include<string>
 
-const float BOTTOM_LANDING = 20;
+const float BOTTOM_LANDING = 10;
 
 GameController* GameController::instance = NULL;
  
@@ -76,9 +76,15 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
               freshFrame = true;
           }        
           else {
-              //Move rover here
-              roverImg->movePos(DT, 0);
-              freshFrame = true;
+              
+              if(roverImg->getX() <= astroImg->getX()){
+                    //Move rover here
+                    roverImg->movePos(DT, 0);
+                    freshFrame = true;
+              }
+              else{
+                  //add bubble here
+              }
           }
        
           if(freshFrame)
