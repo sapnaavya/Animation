@@ -7,7 +7,7 @@ const float BOTTOM_LANDING = 50;
 
 GameController* GameController::instance = NULL;
  
-GameController:: GameController(): screen(NULL), landImg(NULL), astroImg(NULL), roverImg(NULL)
+GameController:: GameController(): screen(NULL), landImg(NULL), astroImg(NULL), roverImg(NULL), msgImg(NULL)
 {}
 
 GameController::~GameController() 
@@ -16,6 +16,7 @@ GameController::~GameController()
     delete landImg;
     delete astroImg;
     delete roverImg;
+    delete msgImg;
 }
 
 GameController* GameController::getInstance() 
@@ -80,7 +81,9 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
                     freshFrame = true;
               }
               else{
-                  //add bubble here
+                  if(msgImg != NULL){
+                      msgImg = new Pixie(roverImg->getX() + roverImg->getPixieImage()->w, roverImg->getY(), velocity);
+                  }
               }
           }
        
@@ -91,6 +94,10 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
             draw(landImg->getPixieImage(), screen, landImg->getX(), landImg->getY());
             draw(astroImg->getPixieImage(), screen, astroImg->getX(), astroImg->getY());
             draw(roverImg->getPixieImage(), screen, roverImg->getX() - roverImg->getPixieImage()->h, roverImg->getY() - roverImg->getPixieImage()->h);
+            
+            if(msgImg != NULL){
+                draw(msgImg->getPixieImage(), screen, msgImg->getX(), roverImg->getY() - (roverImg->getPixieImage()->h)/2);
+            }
             
             SDL_Flip(screen);
             
