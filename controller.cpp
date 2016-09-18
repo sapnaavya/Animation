@@ -3,7 +3,7 @@
 #include<iostream>
 #include<string>
 
-const float BOTTOM_LANDING = 10;
+const float BOTTOM_LANDING = 20;
 
 GameController* GameController::instance = NULL;
  
