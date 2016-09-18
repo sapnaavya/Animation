@@ -5,7 +5,7 @@
 Pixie::Pixie() :x_axis(0.0), y_axis(0.0), velocity(0.0), red(255), green(255), blue(255), image(NULL)
 {}
 
-Pixie::Pixie(const float& x, const float& y, const float& speed) : x_axis(x), y_axis(y), red(255), green(255), blue(255), image(NULL)
+Pixie::Pixie(const float& x, const float& y, const float& speed) : x_axis(x), y_axis(y), velocity(speed), red(255), green(255), blue(255), image(NULL)
 {}
 
 Pixie::~Pixie()
