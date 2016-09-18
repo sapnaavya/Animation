@@ -81,8 +81,10 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
                     freshFrame = true;
               }
               else{
-                  if(msgImg != NULL){
+                  if(msgImg == NULL){
+                      std::cout << "I m there" << std::endl;
                       msgImg = new Pixie(roverImg->getX() + roverImg->getPixieImage()->w, roverImg->getY(), velocity);
+                      freshFrame = true;
                   }
               }
           }
@@ -96,7 +98,8 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
             draw(roverImg->getPixieImage(), screen, roverImg->getX() - roverImg->getPixieImage()->h, roverImg->getY() - roverImg->getPixieImage()->h);
             
             if(msgImg != NULL){
-                draw(msgImg->getPixieImage(), screen, msgImg->getX(), roverImg->getY() - (roverImg->getPixieImage()->h)/2);
+std::cout << "In msg x: " << msgImg->getX() << " Y: " << msgImg->getY() << " h : " << (msgImg->getPixieImage()->h)/2 << std::endl;
+                draw(msgImg->getPixieImage(), screen, msgImg->getX(), msgImg->getY() - (msgImg->getPixieImage()->h)/2);
             }
             
             SDL_Flip(screen);
