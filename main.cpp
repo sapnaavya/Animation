@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-const float X_VELOCITY = 130.0;
+const float X_VELOCITY = 60.0;
 const unsigned int DT = 17u;
 const unsigned int WIDTH = 854u;
 const unsigned int HEIGHT = 480u;

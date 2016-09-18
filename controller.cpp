@@ -44,8 +44,8 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
     }
     
     landImg = new Pixie(0.0, 0.0, 0.0);
-    astroImg = new Pixie(470.0, 0.0, 60);
-    roverImg = new Pixie(0, screen->h - BOTTOM_LANDING, -22.8);
+    astroImg = new Pixie(470.0, 0.0, velocity);
+    roverImg = new Pixie(0, screen->h - BOTTOM_LANDING, -velocity);
     
     landImg->loadPixie("images/marsland.png", false);
     
@@ -86,7 +86,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
             
             draw(landImg->getPixieImage(), screen, landImg->getX(), landImg->getY());
             draw(astroImg->getPixieImage(), screen, astroImg->getX(), astroImg->getY());
-            draw(roverImg->getPixieImage(), screen, roverImg->getX(), roverImg->getY() - roverImg->getPixieImage()->h);
+            draw(roverImg->getPixieImage(), screen, roverImg->getX() - roverImg->getPixieImage()->h, roverImg->getY() - roverImg->getPixieImage()->h);
             
             SDL_Flip(screen);
             
