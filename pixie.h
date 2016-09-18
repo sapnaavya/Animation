@@ -12,7 +12,7 @@ class Pixie
         
         void setCoordinates(const float& x, const float& y);
         void setColor(const int&r, const int&g, const int&b);
-        void loadPixie(const std::string& filename, bool setColorKey = false);
+        void loadPixie(const std::string& filename, bool bColorKey = false);
         
         SDL_Surface* getPixieImage();
         float getX();
@@ -28,5 +28,5 @@ class Pixie
         int green;
         int blue;
         SDL_Surface* image;
-        SDL_Surface* getImage(const std::string& filename, bool setColorKey = false);
+        SDL_Surface* getImage(const std::string& filename, bool bColorKey = false);
 };

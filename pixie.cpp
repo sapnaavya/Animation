@@ -27,19 +27,19 @@ void Pixie::setColor(const int& r, const int& g, const int& b)
     blue = b;
 }
 
-void Pixie ::loadPixie(const std:: string& filename, bool setColorkey)
+void Pixie::loadPixie(const std:: string& filename, bool bColorKey)
 {
-    image = getImage(filename, setColorKey);
+    image = getImage(filename, bColorKey);
 }
 
-SDL_Surface* Pixie ::getImage(const std::string& filename, bool setColorKey)
+SDL_Surface* Pixie::getImage(const std::string& filename, bool bColorKey)
 {
     SDL_Surface* temp = IMG_Load(filename.c_str());
     if (temp == NULL) 
     {
         throw std::string("Unable to load bitmap.")+SDL_GetError();
     }
-    if (setColorKey)
+    if (bColorKey)
     {
         Uint32 colorkey = SDL_MapRGB(temp->format, red, green, blue);
         SDL_SetColorKey(temp, SDL_SRCCOLORKEY|SDL_RLEACCEL, colorkey);
