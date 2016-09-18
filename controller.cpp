@@ -12,11 +12,36 @@ GameController:: GameController(): screen(NULL), landImg(NULL), astroImg(NULL), 
 
 GameController::~GameController() 
 {
-    SDL_FreeSurface(screen);
+/*    SDL_FreeSurface(screen);
     delete landImg;
     delete astroImg;
     delete roverImg;
     delete msgImg;
+ */  
+  if(screen != NULL){
+    SDL_FreeSurface(screen);
+    screen = NULL;
+  }  
+  
+  if(landImg != NULL){
+    delete landImg;
+    landImg = NULL;
+  }
+  
+  if(astroImg != NULL){
+    delete astroImg;
+    astroImg = NULL;
+  }
+  
+  if(roverImg != NULL){
+    delete roverImg;
+    roverImg = NULL;
+  }
+  
+  if(msgImg != NULL){
+    delete msgImg;
+    msgImg = NULL;
+  }
 }
 
 GameController* GameController::getInstance() 
