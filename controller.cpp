@@ -44,8 +44,8 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
     }
     
     landImg = new Pixie(0.0, 0.0, 0.0);
-    astroImg = new Pixie(470.0, 0.0, velocity);
-    roverImg = new Pixie(screen->w, screen->h - BOTTOM_LANDING, -1.8);
+    astroImg = new Pixie(470.0, 0.0, 60);
+    roverImg = new Pixie(0, screen->h - BOTTOM_LANDING, -22.8);
     
     landImg->loadPixie("images/marsland.png", false);
     
