@@ -67,8 +67,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
       
       bool update = updateScreen(DT);
       if(update){
-          
-          if((astroImg->getY() <= (screen->h - BOTTOM_LANDING - astroImg->getPixieImage()->h)){
+          if((astroImg->getY() <= (screen->h - BOTTOM_LANDING - astroImg->getPixieImage()->h))){
               astroImg->movePos(DT);
               freshFrame = true;
           }        
@@ -78,16 +77,16 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
        
           if(freshFrame)
           {
-            freshFrame=false;
+            freshFrame = false;
             
-            draw(landImg, screen, landImg->getX(), landImg->getY());
-            draw(astroImg, screen, astroImg->getX(), astroImg->getY());
+            draw(landImg->getPixieImage(), screen, landImg->getX(), landImg->getY());
+            draw(astroImg->getPixieImage(), screen, astroImg->getX(), astroImg->getY());
             
             //draw(memLeak, screen, x+star->w+20, y);
             //draw(pointer, screen, x+star->w+memLeak->w+40, y);
             SDL_Flip(screen);
             
-            if (makeVideo)
+            if(makeVideo)
             {
                 genFrames.makeFrame();
             }
