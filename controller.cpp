@@ -109,6 +109,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
                   if(msgImg == NULL){
                       std::cout << "I m there" << std::endl;
                       msgImg = new Pixie(roverImg->getX() + roverImg->getPixieImage()->w, roverImg->getY(), velocity);
+                      msgImg->loadPixie("images/message.png", true);
                       freshFrame = true;
                   }
               }
