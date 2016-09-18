@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-const float X_VELOCITY = 60.0;
+const float X_VELOCITY = 100.0;
 const unsigned int DT = 17u;
 const unsigned int WIDTH = 854u;
 const unsigned int HEIGHT = 480u;
@@ -11,7 +11,7 @@ int main()
 {
     try
     {
-        bool makeVideo = false;
+        bool makeVideo = true;
         GameController::getInstance()->init();
         GameController::getInstance()->animation(WIDTH, HEIGHT, X_VELOCITY, DT, makeVideo);
     
