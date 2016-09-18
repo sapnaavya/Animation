@@ -23,7 +23,7 @@ void Pixie::setCoordinates(const float& x, const float& y)
 void Pixie::setColor(const int& r, const int& g, const int& b)
 {
     red = r;
-    green =g;
+    green = g;
     blue = b;
 }
 
