@@ -86,9 +86,8 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
             
             draw(landImg->getPixieImage(), screen, landImg->getX(), landImg->getY());
             draw(astroImg->getPixieImage(), screen, astroImg->getX(), astroImg->getY());
+            draw(roverImg->getPixieImage(), screen, roverImg->getX(), roverImg->getY() - roverImg->getPixieImage()->h);
             
-            //draw(memLeak, screen, x+star->w+20, y);
-            //draw(pointer, screen, x+star->w+memLeak->w+40, y);
             SDL_Flip(screen);
             
             if(makeVideo)
