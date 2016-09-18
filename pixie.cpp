@@ -69,7 +69,7 @@ void Pixie::movePos(const unsigned int& rate)
 {
     float incr = velocity*rate* 0.01;
     x_axis-= incr;
-    y_axis+= incr
+    y_axis+= incr;
 }
 
 
