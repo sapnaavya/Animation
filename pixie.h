@@ -18,7 +18,7 @@ class Pixie
         float getX();
         float getY();
         
-        void movePos(const unsigned int& rate);
+        void movePos(const unsigned int& rate, const float& yFactor);
     
     private:
         float x_axis;

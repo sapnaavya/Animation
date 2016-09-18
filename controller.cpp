@@ -48,7 +48,10 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
     roverImg = new Pixie(screen->w, screen->h - BOTTOM_LANDING, -1.8);
     
     landImg->loadPixie("images/marsland.png", false);
+    
+    astroImg->setColor(0, 0, 0);
     astroImg->loadPixie("images/astronaut.png",true);
+    
     roverImg->loadPixie("images/rover.jpg",true);
     
     SDL_Event event;
@@ -68,11 +71,13 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
       bool update = updateScreen(DT);
       if(update){
           if((astroImg->getY() <= (screen->h - BOTTOM_LANDING - astroImg->getPixieImage()->h))){
-              astroImg->movePos(DT);
+              astroImg->movePos(DT, 1.8);
               freshFrame = true;
           }        
           else {
               //Move rover here
+              roverImg->movePos(DT, 0);
+              freshFrame = true;
           }
        
           if(freshFrame)

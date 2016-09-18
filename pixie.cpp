@@ -65,11 +65,11 @@ float Pixie::getY()
     return y_axis;
 }
 
-void Pixie::movePos(const unsigned int& rate)
+void Pixie::movePos(const unsigned int& rate, const float& yFactor)
 {
     float incr = velocity*rate* 0.01;
     x_axis-= incr;
-    y_axis+= incr;
+    y_axis+= yFactor*incr;
 }
 
 
