@@ -45,14 +45,15 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
     
     landImg = new Pixie(0.0, 0.0, 0.0);
     astroImg = new Pixie(470.0, 0.0, velocity);
-    roverImg = new Pixie(0, screen->h - BOTTOM_LANDING, -velocity);
+    roverImg = new Pixie(0, screen->h - BOTTOM_LANDING, -velocity*1.2);
     
     landImg->loadPixie("images/marsland.png", false);
     
     astroImg->setColor(0, 0, 0);
     astroImg->loadPixie("images/astronaut.png",true);
     
-    roverImg->loadPixie("images/rover.jpg",true);
+    astroImg->setColor(91, 155, 213);
+    roverImg->loadPixie("images/rover.png",true);
     
     SDL_Event event;
     bool done = false;
