@@ -12,36 +12,11 @@ GameController:: GameController(): screen(NULL), landImg(NULL), astroImg(NULL), 
 
 GameController::~GameController() 
 {
-/*    SDL_FreeSurface(screen);
-    delete landImg;
-    delete astroImg;
-    delete roverImg;
-    delete msgImg;
- */  
-  if(screen != NULL){
     SDL_FreeSurface(screen);
-    screen = NULL;
-  }  
-  
-  if(landImg != NULL){
     delete landImg;
-    landImg = NULL;
-  }
-  
-  if(astroImg != NULL){
     delete astroImg;
-    astroImg = NULL;
-  }
-  
-  if(roverImg != NULL){
     delete roverImg;
-    roverImg = NULL;
-  }
-  
-  if(msgImg != NULL){
     delete msgImg;
-    msgImg = NULL;
-  }
 }
 
 GameController* GameController::getInstance() 
@@ -108,7 +83,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
               else{
                   if(msgImg == NULL){
                       std::cout << "I m there" << std::endl;
-                      msgImg = new Pixie(roverImg->getX() + roverImg->getPixieImage()->w, roverImg->getY(), velocity);
+                      msgImg = new Pixie(roverImg->getX() + (roverImg->getPixieImage()->w)/2, roverImg->getY(), velocity);
                       msgImg->loadPixie("images/message.png", true);
                       freshFrame = true;
                   }
@@ -125,7 +100,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
             
             if(msgImg != NULL){
 std::cout << "In msg x: " << msgImg->getX() << " Y: " << msgImg->getY() << " h : " << (msgImg->getPixieImage()->h)/2 << std::endl;
-                draw(msgImg->getPixieImage(), screen, msgImg->getX(), msgImg->getY() - (msgImg->getPixieImage()->h)/2);
+                draw(msgImg->getPixieImage(), screen, msgImg->getX(), msgImg->getY() - msgImg->getPixieImage()->h);
             }
             
             SDL_Flip(screen);

@@ -10,10 +10,8 @@ Pixie::Pixie(const float& x, const float& y, const float& speed) : x_axis(x), y_
 
 Pixie::~Pixie()
 {
-    if(image != NULL){
-        SDL_FreeSurface(image);
-        image = NULL;    
-    }
+    SDL_FreeSurface(image);
+    image = NULL;    
 }
 
 void Pixie::setCoordinates(const float& x, const float& y)
