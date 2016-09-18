@@ -20,6 +20,7 @@ class GameController
        Pixie* landImg;
        Pixie* astroImg;
        Pixie* roverImg;
+       Pixie* msgImg;
        
        void draw(SDL_Surface* image, SDL_Surface* screen, float x = 0.0, float y = 0.0);  void animation();
        bool updateScreen(const unsigned int& DT);
