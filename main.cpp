@@ -1,30 +1,29 @@
-#include <SDL.h>
-#include <SDL_image.h>
+#include "controller.h"
 #include <iostream>
 #include <string>
-#include "generateFrames.h"
 
- const unsigned int WIDTH = 854u;
- const unsigned int HEIGHT = 480u;
+const float X_VELOCITY = 200.0;
+const unsigned int DT = 17u;
+const unsigned int WIDTH = 854u;
+const unsigned int HEIGHT = 480u;
 
- int main()
- {
- try
-   {
-   Pixie p1;
-   Controller c1;
-   p1.init();
-   SDL_Event event;
-   GenerateFrames genFrames(screen);
-   c1.move();
-   }
- catch(const std::string& msg)
-  {
-    std::cout << msg << std::endl; 
-   }
- catch(...) 
-  {
-    std::cout << "oops" << std::endl;
-  }
- }
+int main()
+{
+    try
+    {
+        bool makeVideo = false;
+        GameController::getInstance()->init();
+        GameController::getInstance()->animation(WIDTH, HEIGHT, X_VELOCITY, DT, makeVideo);
+    
+        delete GameController::getInstance();
+    }
+    catch(const std::string& msg)
+    {
+        std::cout << msg << std::endl; 
+    }
+    catch(...) 
+    {
+        std::cout << "oops" << std::endl;
+    }
+}
   

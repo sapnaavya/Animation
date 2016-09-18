@@ -5,7 +5,7 @@
 class GenerateFrames {
 public:
   GenerateFrames(SDL_Surface* s) : 
-    screen(s), USERNAME("malloy"), MAX_FRAMES(1000), frameCount(0) {}
+    screen(s), USERNAME("sapnapg"), MAX_FRAMES(500), frameCount(0) {}
   void makeFrame();
   unsigned int getFrameCount() const { return frameCount; }
   unsigned int getMaxFrames() const { return MAX_FRAMES; }

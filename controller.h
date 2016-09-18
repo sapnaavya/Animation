@@ -1,36 +1,27 @@
-#include<iostream>
-#include<cstring>
+#include "pixie.h"
 #include<SDL.h>
-#include "generateFrames.h"
-class Pixie; 
-class Controller
-  {
-  private:
-   static Controller* control;
-   SDL_Surface* screen;
-   Pixie* landImg;
-   Pixie* astroImg;
-   Pixie* angryImg;
-  // bool makevideo= false;
-  // bool done= false;
-  // bool freshframe= false;
-   Controller();
-   Controller( const Controller&);
-   Controller& operator=(const Controller&);
-   ~Controller();
-   void draw(SDL_Surface* image, SDL_Surface screen, float x= 0.0, float y= 0.0);  void animation();
-   bool update();
-   void initializePixie();
-};  
-    	
 
+class GameGameController
+{
+    public:
+        static GameController* getInstance();
+        ~GameController();
+        
+        void init();
+        void animation(const unsigned int& width, const unsigned int& height, const float& velocity, const unsigned int& DT, const bool makeVideo);
 
-   public:
-    static Controller* getInstance();
-    void init();
-    void initPixie(const unsigned int& width, const unsigned& height); 
-    void draw();
-    void animation();
-  };
- 
+    private:
+       GameController();
+       GameController(const GameController&);
+       GameController& operator=(const GameController&);
+       
+       static GameController* instance;
+       SDL_Surface* screen;
+       Pixie* landImg;
+       Pixie* astroImg;
+       Pixie* roverImg;
+       
+       void draw(SDL_Surface* image, SDL_Surface screen, float x= 0.0, float y= 0.0);  void animation();
+       bool updateScreen(const unsigned int& DT);
+};
 
