@@ -5,7 +5,7 @@
 
 const float BOTTOM_LANDING = 80;
 
-GameGameController* GameGameController::instance = NULL;
+GameController* GameController::instance = NULL;
  
 GameController:: GameController(): screen(NULL), landImg(NULL), astroImg(NULL), roverImg(NULL)
 {}

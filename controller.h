@@ -1,7 +1,7 @@
 #include "pixie.h"
 #include<SDL.h>
 
-class GameGameController
+class GameController
 {
     public:
         static GameController* getInstance();
