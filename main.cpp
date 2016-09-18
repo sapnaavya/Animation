@@ -15,9 +15,9 @@
 const unsigned int WIDTH = 854u;
 const unsigned int HEIGHT = 480u;
 
-const float START_Y = 10.0;
-const float INCR_X = 0.3;
-const float X_VELOCITY = 150.0;
+const float START_Y = 0;
+const float INCR_X = 0.5;
+const float X_VELOCITY = 300;
 
 // Approximately 60 frames per second: 60/1000
 const unsigned int DT = 17u; // ***
@@ -54,7 +54,7 @@ void draw(SDL_Surface* image, SDL_Surface* screen,
   SDL_BlitSurface(image, &src, screen, &dest);
 }
 
-bool update(float& x, float&y) {
+bool update(float& x, float& y) {
   static unsigned int remainder = 0u; // ***
   static unsigned int currentTicks = 0u;
   static unsigned int prevTicks = SDL_GetTicks();
@@ -64,8 +64,9 @@ bool update(float& x, float&y) {
   if( elapsedTicks < DT ) return false; // ***
 
   float incr = X_VELOCITY * DT * 0.001; // ***
-  x += incr + 1;
+  x -= incr;
   y += incr;
+// x -= y*y;
 
   prevTicks = currentTicks;
   remainder = elapsedTicks - DT; // ***
@@ -80,11 +81,11 @@ int main() {
     if (screen == NULL) {
       throw std::string("Unable to set video mode: ")+SDL_GetError();
     }
-    SDL_Surface *mars = getImage("images/sapnapg.png", false);
+    SDL_Surface *mars = getImage("images/marsland.png", false);
     SDL_Surface *astronaut = getImage("images/astronaut.png", true);
 
 
-    float x = -astronaut->w;
+    float x = 470;
     float y = START_Y;
     SDL_Event event;
     bool makeVideo = false;
@@ -98,7 +99,7 @@ int main() {
           if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
         }
       }
-      if ( y <= 406.0-astronaut->h ) {
+     if ( y <= 406.0-astronaut->h ) {
         freshFrame = update(x,y);
       }
       else {
