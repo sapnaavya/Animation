@@ -49,10 +49,7 @@ void GameController::animation(const unsigned int& width, const unsigned int& he
     
     landImg->loadPixie("images/marsland.png", false);
     
-    astroImg->setColor(0, 0, 0);
     astroImg->loadPixie("images/astronaut.png", true);
-    
-    astroImg->setColor(91, 155, 213);
     roverImg->loadPixie("images/rover.png", true);
     
     SDL_Event event;
