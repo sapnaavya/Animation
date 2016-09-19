@@ -9,21 +9,21 @@ const unsigned int HEIGHT = 480u;
 
 int main()
 {
-    try
-    {
-        bool makeVideo = false;
-        GameController::getInstance()->init();
-        GameController::getInstance()->animation(WIDTH, HEIGHT, X_VELOCITY, DT, makeVideo);
-    
-        delete GameController::getInstance();
-    }
-    catch(const std::string& msg)
-    {
-        std::cout << msg << std::endl; 
-    }
-    catch(...) 
-    {
-        std::cout << "oops" << std::endl;
-    }
+  try
+  {
+    bool makeVideo = false;
+    GameController::getInstance()->init();
+    GameController::getInstance()->animation(WIDTH, HEIGHT, X_VELOCITY, DT, makeVideo);
+
+    delete GameController::getInstance();
+  }
+  catch(const std::string& msg)
+  {
+    std::cout << msg << std::endl; 
+  }
+  catch(...) 
+  {
+    std::cout << "oops" << std::endl;
+  }
 }
-  
+
