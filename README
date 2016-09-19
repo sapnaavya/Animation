@@ -1,0 +1,10 @@
+
+This directory contains two classes:
+1)Pixie.h/.cpp
+2)GameController.h/cpp
+1) Pixie.h/.cpp is mainly used to manage images.
+2) GameController.h/.cpp is mainly used to load and those images and move images on the screen using their coordinates.
+
+Note: To enable make video(in main.cpp):
+         bool makeVideo = true;
+         
