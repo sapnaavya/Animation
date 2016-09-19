@@ -11,7 +11,7 @@ int main()
 {
     try
     {
-        bool makeVideo = true;
+        bool makeVideo = false;
         GameController::getInstance()->init();
         GameController::getInstance()->animation(WIDTH, HEIGHT, X_VELOCITY, DT, makeVideo);
     
